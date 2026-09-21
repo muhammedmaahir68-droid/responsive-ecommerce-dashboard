@@ -1,0 +1,19 @@
+﻿{
+  "name": "responsive-ecommerce-dashboard",
+  "version": "1.0.0",
+  "description": "Understandable, modern responsive frontend dashboard designed for teaching and production web apps.",
+  "scripts": {
+    "dev": "npx serve . -l 3000",
+    "start": "npx serve . -l 3000"
+  },
+  "keywords": [
+    "responsive",
+    "dashboard",
+    "frontend",
+    "css-grid",
+    "flexbox",
+    "mobile-first"
+  ],
+  "author": "Maahir",
+  "license": "MIT"
+}

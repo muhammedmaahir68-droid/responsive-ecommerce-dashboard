@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <!-- ====================================================================
+       TEACHING STAFF RULE #1: THE VIEWPORT META TAG
+       --------------------------------------------------------------------
+       Without this tag, mobile phones (iOS & Android) assume the site is a
+       rigid 980px desktop site and zoom out, making text unreadable!
+       - width=device-width: Sets screen width to the actual device hardware width.
+       - initial-scale=1.0: Sets the initial 1:1 zoom ratio when page loads.
+       ==================================================================== -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AuraCommerce - Modern Responsive Dashboard</title>
+  
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Modular CSS Architecture -->
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+  <!-- Educational Banner (Visible when Explain Mode is activated) -->
+  <div class="explain-banner" id="explainBanner">
+    <strong>Visual Layout Guide:</strong> Purple dashed = CSS Grid Container | Green = Fluid Auto-Fit Grid | Orange = Flexbox Toolbar | Blue = Sticky Sidebar
+  </div>
+
+  <!-- Master Responsive Application Grid -->
+  <div class="app-container">
+
+    <!-- Mobile Drawer Backdrop Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay" aria-label="Close menu overlay"></div>
+
+    <!-- ==================================================================
+         1. RESPONSIVE SIDEBAR (Desktop Fixed / Mobile Off-Canvas Drawer)
+         ================================================================== -->
+    <aside class="sidebar" id="sidebar">
+      <div>
+        <!-- Brand Logo -->
+        <div class="brand-logo">
+          <div class="brand-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+              <polyline points="2 17 12 22 22 17"></polyline>
+              <polyline points="2 12 12 17 22 12"></polyline>
+            </svg>
+          </div>
+          <span>AuraCommerce</span>
+        </div>
+
+        <!-- Navigation Menu -->
+        <div class="nav-section-label">Main Menu</div>
+        <ul class="nav-list">
+          <li class="nav-item active" data-view="dashboard">
+            <a href="#dashboard">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="7" height="7"></rect>
+                <rect x="14" y="3" width="7" height="7"></rect>
+                <rect x="14" y="14" width="7" height="7"></rect>
+                <rect x="3" y="14" width="7" height="7"></rect>
+              </svg>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li class="nav-item" data-view="orders">
+            <a href="#orders">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="9" cy="21" r="1"></circle>
+                <circle cx="20" cy="21" r="1"></circle>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+              </svg>
+              <span>Orders</span>
+              <span class="nav-badge">5</span>
+            </a>
+          </li>
+          <li class="nav-item" data-view="products">
+            <a href="#products">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path>
+                <line x1="7" y1="7" x2="7.01" y2="7"></line>
+              </svg>
+              <span>Products</span>
+            </a>
+          </li>
+          <li class="nav-item" data-view="customers">
+            <a href="#customers">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+              <span>Customers</span>
+            </a>
+          </li>
+          <li class="nav-item" data-view="analytics">
+            <a href="#analytics">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="20" x2="18" y2="10"></line>
+                <line x1="12" y1="20" x2="12" y2="4"></line>
+                <line x1="6" y1="20" x2="6" y2="14"></line>
+              </svg>
+              <span>Analytics</span>
+            </a>
+          </li>
+          <li class="nav-item" data-view="settings">
+            <a href="#settings">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3"></circle>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+              </svg>
+              <span>Settings</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- User Profile Box -->
+      <div class="sidebar-footer">
+        <div class="user-profile">
+          <div class="user-avatar">MM</div>
+          <div class="user-info">
+            <div class="user-name">Mohamed Maahir</div>
+            <div class="user-role">Store Manager</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- ==================================================================
+         2. MAIN CONTENT WRAPPER
+         ================================================================== -->
+    <div class="main-wrapper">
+
+      <!-- Responsive Header -->
+      <header class="top-header">
+        <div class="header-left">
+          <!-- Mobile Hamburger Button -->
+          <button class="btn-icon btn-hamburger" id="hamburgerBtn" aria-label="Toggle navigation drawer">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+
+          <!-- Search Box -->
+          <div class="search-box">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input type="text" placeholder="Search orders, customers, items...">
+            <span class="kbd-shortcut">⌘K</span>
+          </div>
+        </div>
+
+        <!-- Header Right: Teaching HUD & Controls -->
+        <div class="header-right">
+          <!-- Live Breakpoint HUD Chip -->
+          <div class="hud-chip" id="breakpointHUD">
+            Desktop: 1280px
+          </div>
+
+          <!-- Explain Mode Toggle Button -->
+          <button class="btn btn-explain" id="explainModeBtn" title="Highlight layout boundaries for teaching staff">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg> Explain Mode
+          </button>
+
+          <!-- Theme Switcher -->
+          <button class="btn-icon" id="themeToggleBtn" aria-label="Toggle Dark / Light Theme" title="Toggle Dark/Light Mode">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+          </button>
+
+          <!-- Notifications -->
+          <button class="btn-icon" aria-label="Notifications">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
+              <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <!-- Dashboard Body Content -->
+      <main class="dashboard-content">
+
+        <!-- ================================================================
+             VIEW 1: DASHBOARD OVERVIEW
+             ================================================================ -->
+        <div class="view-section active" id="view-dashboard">
+
+          <!-- Hero / Welcome Banner -->
+          <section class="hero-banner">
+            <div class="hero-text">
+              <h1>Good afternoon, Mohamed Maahir</h1>
+              <p>Here is what is happening with your e-commerce store today.</p>
+            </div>
+            <div class="hero-actions">
+              <button class="btn btn-outline">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                  <polyline points="7 10 12 15 17 10"></polyline>
+                  <line x1="12" y1="15" x2="12" y2="3"></line>
+                </svg>
+                <span>Export Report</span>
+              </button>
+              <button class="btn btn-primary" id="openModalBtn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                <span>New Product</span>
+              </button>
+            </div>
+          </section>
+
+        <!-- ================================================================
+             3. FLUID METRIC CARDS (CSS Grid: repeat(auto-fit, minmax(240px, 1fr)))
+             ================================================================ -->
+        <section class="stats-grid">
+          <!-- Card 1: Revenue -->
+          <article class="stat-card">
+            <div class="stat-card-header">
+              <div class="stat-icon revenue">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M6 3h12M6 8h12M6 13l8.5 8M6 13h3a4 4 0 0 0 0-8"></path>
+                </svg>
+              </div>
+              <span class="trend-badge positive">
+                ↑ +14.8%
+              </span>
+            </div>
+            <div class="stat-card-body">
+              <h3>Total Revenue</h3>
+              <div class="stat-card-value">₹1,28,430</div>
+            </div>
+            <div class="stat-card-footer">+₹16,200 compared to last month</div>
+          </article>
+
+          <!-- Card 2: Orders -->
+          <article class="stat-card">
+            <div class="stat-card-header">
+              <div class="stat-icon orders">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="9" cy="21" r="1"></circle>
+                  <circle cx="20" cy="21" r="1"></circle>
+                  <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+              </div>
+              <span class="trend-badge positive">
+                ↑ +8.2%
+              </span>
+            </div>
+            <div class="stat-card-body">
+              <h3>Total Orders</h3>
+              <div class="stat-card-value">3,420</div>
+            </div>
+            <div class="stat-card-footer">240 orders waiting processing</div>
+          </article>
+
+          <!-- Card 3: Conversion Rate -->
+          <article class="stat-card">
+            <div class="stat-card-header">
+              <div class="stat-icon conversion">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline>
+                  <polyline points="17 6 23 6 23 12"></polyline>
+                </svg>
+              </div>
+              <span class="trend-badge positive">
+                ↑ +1.2%
+              </span>
+            </div>
+            <div class="stat-card-body">
+              <h3>Conversion Rate</h3>
+              <div class="stat-card-value">3.42%</div>
+            </div>
+            <div class="stat-card-footer">Industry avg: 2.35%</div>
+          </article>
+
+          <!-- Card 4: Customers -->
+          <article class="stat-card">
+            <div class="stat-card-header">
+              <div class="stat-icon customers">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="9" cy="7" r="4"></circle>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+                </svg>
+              </div>
+              <span class="trend-badge positive">
+                ↑ +24.6%
+              </span>
+            </div>
+            <div class="stat-card-body">
+              <h3>Active Customers</h3>
+              <div class="stat-card-value">18,910</div>
+            </div>
+            <div class="stat-card-footer">+1,240 new signups this week</div>
+          </article>
+        </section>
+
+        <!-- ================================================================
+             4. ANALYTICS & BREAKDOWN (2-Column Desktop -> 1-Column Mobile)
+             ================================================================ -->
+        <section class="analytics-grid">
+          <!-- Sales Revenue Interactive Chart -->
+          <div class="card-panel">
+            <div class="panel-header">
+              <div>
+                <h2 class="panel-title">Sales Revenue Overview</h2>
+                <p class="panel-subtitle">Net sales performance across store channels</p>
+              </div>
+              <div class="time-filter">
+                <button class="time-btn active" data-range="7D">7 Days</button>
+                <button class="time-btn" data-range="30D">30 Days</button>
+                <button class="time-btn" data-range="1Y">1 Year</button>
+              </div>
+            </div>
+
+            <!-- Responsive SVG Area Chart Container -->
+            <div class="chart-container">
+              <div class="chart-tooltip" id="chartTooltip"></div>
+              <svg class="chart-svg" viewBox="0 0 700 220" preserveAspectRatio="none">
+                <defs>
+                  <linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="var(--primary)" stop-opacity="0.3" />
+                    <stop offset="100%" stop-color="var(--primary)" stop-opacity="0.0" />
+                  </linearGradient>
+                </defs>
+                <!-- Grid Lines -->
+                <line x1="40" y1="30" x2="660" y2="30" class="chart-grid-line" />
+                <line x1="40" y1="90" x2="660" y2="90" class="chart-grid-line" />
+                <line x1="40" y1="150" x2="660" y2="150" class="chart-grid-line" />
+                <line x1="40" y1="190" x2="660" y2="190" stroke="var(--border-default)" />
+                
+                <!-- Dynamic Shaded Area & Line -->
+                <path id="chartAreaPath" fill="url(#chartGradient)"></path>
+                <path id="chartLinePath" fill="none" stroke="var(--primary)" stroke-width="3"></path>
+                
+                <!-- Hover Points -->
+                <g id="chartDotsContainer"></g>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Category Breakdown -->
+          <div class="card-panel">
+            <div class="panel-header">
+              <div>
+                <h2 class="panel-title">Top Categories</h2>
+                <p class="panel-subtitle">Revenue share by department</p>
+              </div>
+            </div>
+
+            <div class="category-list">
+              <!-- Category 1 -->
+              <div class="category-item">
+                <div class="category-info">
+                  <span>Electronics & Gadgets</span>
+                  <strong>₹54,200 (42%)</strong>
+                </div>
+                <div class="category-bar-bg">
+                  <div class="category-bar-fill" style="width: 42%; background-color: var(--primary);"></div>
+                </div>
+              </div>
+
+              <!-- Category 2 -->
+              <div class="category-item">
+                <div class="category-info">
+                  <span>Fashion & Apparel</span>
+                  <strong>₹38,500 (30%)</strong>
+                </div>
+                <div class="category-bar-bg">
+                  <div class="category-bar-fill" style="width: 30%; background-color: var(--info);"></div>
+                </div>
+              </div>
+
+              <!-- Category 3 -->
+              <div class="category-item">
+                <div class="category-info">
+                  <span>Home & Kitchen</span>
+                  <strong>₹21,100 (16%)</strong>
+                </div>
+                <div class="category-bar-bg">
+                  <div class="category-bar-fill" style="width: 16%; background-color: var(--warning);"></div>
+                </div>
+              </div>
+
+              <!-- Category 4 -->
+              <div class="category-item">
+                <div class="category-info">
+                  <span>Health & Beauty</span>
+                  <strong>₹14,630 (12%)</strong>
+                </div>
+                <div class="category-bar-bg">
+                  <div class="category-bar-fill" style="width: 12%; background-color: var(--success);"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             5. RECENT ORDERS (Responsive Card-Flip Table Pattern)
+             ================================================================ -->
+        <section class="orders-section">
+          <!-- Filter Toolbar -->
+          <div class="orders-toolbar">
+            <div class="order-tabs">
+              <button class="tab-btn active" data-tab="all">All Orders</button>
+              <button class="tab-btn" data-tab="completed">Completed</button>
+              <button class="tab-btn" data-tab="processing">Processing</button>
+              <button class="tab-btn" data-tab="shipped">Shipped</button>
+              <button class="tab-btn" data-tab="cancelled">Cancelled</button>
+            </div>
+
+            <div class="search-box" style="max-width: 260px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <input type="text" id="tableSearchInput" placeholder="Filter by customer or ID...">
+            </div>
+          </div>
+
+          <!-- Responsive Table Container -->
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Order ID</th>
+                  <th>Customer</th>
+                  <th>Product Item</th>
+                  <th>Date</th>
+                  <th>Amount</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="ordersTableBody">
+                <!-- Order 1 -->
+                <tr data-status="completed">
+                  <td data-label="Order ID"><strong>#ORD-9021</strong></td>
+                  <td data-label="Customer">
+                    <div class="customer-cell">
+                      <div class="customer-avatar" style="background: #6366f1;">AM</div>
+                      <div>
+                        <div class="customer-name">Alex Morgan</div>
+                        <div class="customer-email">alex.m@example.com</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td data-label="Product">Wireless Noise Canceling Headphones</td>
+                  <td data-label="Date">Sep 21, 2026</td>
+                  <td data-label="Amount"><strong>₹24,999</strong></td>
+                  <td data-label="Status"><span class="status-pill status-completed">Completed</span></td>
+                  <td data-label="Actions">
+                    <button class="btn btn-outline" style="padding: 4px 10px; font-size: 0.75rem;">View</button>
+                  </td>
+                </tr>
+
+                <!-- Order 2 -->
+                <tr data-status="processing">
+                  <td data-label="Order ID"><strong>#ORD-9022</strong></td>
+                  <td data-label="Customer">
+                    <div class="customer-cell">
+                      <div class="customer-avatar" style="background: #10b981;">EK</div>
+                      <div>
+                        <div class="customer-name">Elena Rostova</div>
+                        <div class="customer-email">elena.k@example.com</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td data-label="Product">Smartwatch Series 8 Titanium</td>
+                  <td data-label="Date">Sep 21, 2026</td>
+                  <td data-label="Amount"><strong>₹38,500</strong></td>
+                  <td data-label="Status"><span class="status-pill status-processing">Processing</span></td>
+                  <td data-label="Actions">
+                    <button class="btn btn-outline" style="padding: 4px 10px; font-size: 0.75rem;">View</button>
+                  </td>
+                </tr>
+
+                <!-- Order 3 -->
+                <tr data-status="shipped">
+                  <td data-label="Order ID"><strong>#ORD-9023</strong></td>
+                  <td data-label="Customer">
+                    <div class="customer-cell">
+                      <div class="customer-avatar" style="background: #f59e0b;">TC</div>
+                      <div>
+                        <div class="customer-name">Tariq Chen</div>
+                        <div class="customer-email">tariq.c@example.com</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td data-label="Product">Mechanical Gaming Keyboard RGB</td>
+                  <td data-label="Date">Sep 20, 2026</td>
+                  <td data-label="Amount"><strong>₹14,800</strong></td>
+                  <td data-label="Status"><span class="status-pill status-shipped">Shipped</span></td>
+                  <td data-label="Actions">
+                    <button class="btn btn-outline" style="padding: 4px 10px; font-size: 0.75rem;">View</button>
+                  </td>
+                </tr>
+
+                <!-- Order 4 -->
+                <tr data-status="completed">
+                  <td data-label="Order ID"><strong>#ORD-9024</strong></td>
+                  <td data-label="Customer">
+                    <div class="customer-cell">
+                      <div class="customer-avatar" style="background: #ec4899;">SJ</div>
+                      <div>
+                        <div class="customer-name">Sophia Jenkins</div>
+                        <div class="customer-email">sophia.j@example.com</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td data-label="Product">Ergonomic Office Chair Mesh</td>
+                  <td data-label="Date">Sep 20, 2026</td>
+                  <td data-label="Amount"><strong>₹28,200</strong></td>
+                  <td data-label="Status"><span class="status-pill status-completed">Completed</span></td>
+                  <td data-label="Actions">
+                    <button class="btn btn-outline" style="padding: 4px 10px; font-size: 0.75rem;">View</button>
+                  </td>
+                </tr>
+
+                <!-- Order 5 -->
+                <tr data-status="cancelled">
+                  <td data-label="Order ID"><strong>#ORD-9025</strong></td>
+                  <td data-label="Customer">
+                    <div class="customer-cell">
+                      <div class="customer-avatar" style="background: #ef4444;">MD</div>
+                      <div>
+                        <div class="customer-name">Marcus Davis</div>
+                        <div class="customer-email">marcus.d@example.com</div>
+                      </div>
+                    </div>
+                  </td>
+                  <td data-label="Product">Ultralight Carbon Bike Helmet</td>
+                  <td data-label="Date">Sep 19, 2026</td>
+                  <td data-label="Amount"><strong>₹12,450</strong></td>
+                  <td data-label="Status"><span class="status-pill status-cancelled">Cancelled</span></td>
+                  <td data-label="Actions">
+                    <button class="btn btn-outline" style="padding: 4px 10px; font-size: 0.75rem;">View</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div> <!-- END VIEW 1: DASHBOARD -->
+
+      <!-- ================================================================
+           VIEW 2: ORDERS MANAGEMENT
+           ================================================================ -->
+      <div class="view-section" id="view-orders">
+        <section class="hero-banner">
+          <div class="hero-text">
+            <h1>Orders Management</h1>
+            <p>Manage customer orders, fulfillment statuses, and invoices.</p>
+          </div>
+          <div class="hero-actions">
+            <button class="btn btn-outline" onclick="showToast('Exporting orders CSV...')">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                <polyline points="7 10 12 15 17 10"></polyline>
+                <line x1="12" y1="15" x2="12" y2="3"></line>
+              </svg>
+              <span>Export CSV</span>
+            </button>
+            <button class="btn btn-primary" onclick="showToast('Filter options active')">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
+              </svg>
+              <span>Filters</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- Orders Metric Cards -->
+        <section class="stats-grid">
+          <article class="stat-card">
+            <div class="stat-card-header">
+              <div class="stat-icon orders"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg></div>
+              <span class="trend-badge positive">All Time</span>
+            </div>
+            <div class="stat-card-body">
+              <h3>Total Placed</h3>
+              <div class="stat-card-value">3,420</div>
+            </div>
+            <div class="stat-card-footer">Across all sales channels</div>
+          </article>
+
+          <article class="stat-card">
+            <div class="stat-card-header">
+              <div class="stat-icon conversion"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg></div>
+              <span class="trend-badge positive">Need Action</span>
+            </div>
+            <div class="stat-card-body">
+              <h3>Processing</h3>
+              <div class="stat-card-value">42</div>
+            </div>
+            <div class="stat-card-footer">Orders to pack today</div>
+          </article>
+
+          <article class="stat-card">
+            <div class="stat-card-header">
+              <div class="stat-icon revenue"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg></div>
+              <span class="trend-badge positive">In Transit</span>
+            </div>
+            <div class="stat-card-body">
+              <h3>Shipped</h3>
+              <div class="stat-card-value">128</div>
+            </div>
+            <div class="stat-card-footer">With delivery courier</div>
+          </article>
+
+          <article class="stat-card">
+            <div class="stat-card-header">
+              <div class="stat-icon customers"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg></div>
+              <span class="trend-badge positive">99.4% Rate</span>
+            </div>
+            <div class="stat-card-body">
+              <h3>Delivered</h3>
+              <div class="stat-card-value">3,240</div>
+            </div>
+            <div class="stat-card-footer">Successfully fulfilled</div>
+          </article>
+        </section>
+
+        <!-- Orders Table -->
+        <section class="orders-section">
+          <div class="orders-toolbar">
+            <div class="order-tabs">
+              <button class="tab-btn active" onclick="showToast('Viewing All Orders')">All (3,420)</button>
+              <button class="tab-btn" onclick="showToast('Filtered to Completed')">Completed (3,240)</button>
+              <button class="tab-btn" onclick="showToast('Filtered to Processing')">Processing (42)</button>
+              <button class="tab-btn" onclick="showToast('Filtered to Shipped')">Shipped (128)</button>
+            </div>
+            <div class="search-box" style="max-width: 260px;">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <input type="text" placeholder="Search orders...">
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Order ID</th>
+                  <th>Customer</th>
+                  <th>Item Details</th>
+                  <th>Date</th>
+                  <th>Payment</th>
+                  <th>Total</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-label="Order ID"><strong>#ORD-9021</strong></td>
+                  <td data-label="Customer">Alex Morgan</td>
+                  <td data-label="Item">Wireless Noise Canceling Headphones</td>
+                  <td data-label="Date">Sep 21, 2026</td>
+                  <td data-label="Payment">UPI (GPay)</td>
+                  <td data-label="Total"><strong>₹24,999</strong></td>
+                  <td data-label="Status"><span class="status-pill status-completed">Completed</span></td>
+                  <td data-label="Action"><button class="btn btn-outline" style="padding: 4px 10px; font-size: 0.75rem;" onclick="showToast('Viewing details for #ORD-9021')">View</button></td>
+                </tr>
+                <tr>
+                  <td data-label="Order ID"><strong>#ORD-9022</strong></td>
+                  <td data-label="Customer">Elena Rostova</td>
+                  <td data-label="Item">Smartwatch Series 8 Titanium</td>
+                  <td data-label="Date">Sep 21, 2026</td>
+                  <td data-label="Payment">Credit Card</td>
+                  <td data-label="Total"><strong>₹38,500</strong></td>
+                  <td data-label="Status"><span class="status-pill status-processing">Processing</span></td>
+                  <td data-label="Action"><button class="btn btn-outline" style="padding: 4px 10px; font-size: 0.75rem;" onclick="showToast('Viewing details for #ORD-9022')">View</button></td>
+                </tr>
+                <tr>
+                  <td data-label="Order ID"><strong>#ORD-9023</strong></td>
+                  <td data-label="Customer">Tariq Chen</td>
+                  <td data-label="Item">Mechanical Gaming Keyboard RGB</td>
+                  <td data-label="Date">Sep 20, 2026</td>
+                  <td data-label="Payment">NetBanking</td>
+                  <td data-label="Total"><strong>₹14,800</strong></td>
+                  <td data-label="Status"><span class="status-pill status-shipped">Shipped</span></td>
+                  <td data-label="Action"><button class="btn btn-outline" style="padding: 4px 10px; font-size: 0.75rem;" onclick="showToast('Viewing details for #ORD-9023')">View</button></td>
+                </tr>
+                <tr>
+                  <td data-label="Order ID"><strong>#ORD-9024</strong></td>
+                  <td data-label="Customer">Sophia Jenkins</td>
+                  <td data-label="Item">Ergonomic Office Chair Mesh</td>
+                  <td data-label="Date">Sep 20, 2026</td>
+                  <td data-label="Payment">UPI (Paytm)</td>
+                  <td data-label="Total"><strong>₹28,200</strong></td>
+                  <td data-label="Status"><span class="status-pill status-completed">Completed</span></td>
+                  <td data-label="Action"><button class="btn btn-outline" style="padding: 4px 10px; font-size: 0.75rem;" onclick="showToast('Viewing details for #ORD-9024')">View</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="pagination-bar">
+            <span class="pagination-info">Showing 1 to 4 of 3,420 orders</span>
+            <div class="pagination-controls">
+              <button class="btn btn-outline" style="padding: 4px 12px; font-size: 0.75rem;" onclick="showToast('Previous page')">← Prev</button>
+              <button class="btn btn-primary" style="padding: 4px 12px; font-size: 0.75rem;">1</button>
+              <button class="btn btn-outline" style="padding: 4px 12px; font-size: 0.75rem;" onclick="showToast('Next page')">Next →</button>
+            </div>
+          </div>
+        </section>
+      </div> <!-- END VIEW 2: ORDERS -->
+
+      <!-- ================================================================
+           VIEW 3: PRODUCT CATALOG
+           ================================================================ -->
+      <div class="view-section" id="view-products">
+        <section class="hero-banner">
+          <div class="hero-text">
+            <h1>Product Catalog & Inventory</h1>
+            <p>Manage product pricing, descriptions, SKU, and stock levels.</p>
+          </div>
+          <div class="hero-actions">
+            <button class="btn btn-outline" onclick="showToast('Exporting inventory report...')">
+              <span>Export CSV</span>
+            </button>
+            <button class="btn btn-primary" onclick="document.getElementById('openModalBtn').click()">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+              <span>New Product</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- Product Cards Grid -->
+        <div class="products-grid">
+          <div class="product-card">
+            <div class="product-header-banner" style="background:none;padding:0;">
+              <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=400&h=200&fit=crop&auto=format" alt="Wireless Noise-Canceling Headphones" style="width:100%;height:100%;object-fit:cover;" loading="lazy">
+              <span class="product-stock-badge stock-in">In Stock (45)</span>
+            </div>
+            <div class="product-card-content">
+              <span class="product-category-tag">Electronics</span>
+              <h3 class="product-title">Wireless Pro Noise-Canceling Headphones</h3>
+              <span class="product-sku">SKU: AUD-9021</span>
+              <div class="product-price-row">
+                <span class="product-price">₹24,999</span>
+                <button class="btn btn-outline" style="padding: 4px 12px; font-size: 0.75rem;" onclick="showToast('Editing Headphones')">Edit</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-header-banner" style="background:none;padding:0;">
+              <img src="https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=400&h=200&fit=crop&auto=format" alt="Smartwatch Series 8 Titanium" style="width:100%;height:100%;object-fit:cover;" loading="lazy">
+              <span class="product-stock-badge stock-low">Low Stock (8)</span>
+            </div>
+            <div class="product-card-content">
+              <span class="product-category-tag">Wearables</span>
+              <h3 class="product-title">Smartwatch Series 8 Titanium Edition</h3>
+              <span class="product-sku">SKU: WCH-8802</span>
+              <div class="product-price-row">
+                <span class="product-price">₹38,500</span>
+                <button class="btn btn-outline" style="padding: 4px 12px; font-size: 0.75rem;" onclick="showToast('Editing Smartwatch')">Edit</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-header-banner" style="background:none;padding:0;">
+              <img src="https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=400&h=200&fit=crop&auto=format" alt="Mechanical RGB Gaming Keyboard" style="width:100%;height:100%;object-fit:cover;" loading="lazy">
+              <span class="product-stock-badge stock-in">In Stock (120)</span>
+            </div>
+            <div class="product-card-content">
+              <span class="product-category-tag">Accessories</span>
+              <h3 class="product-title">Mechanical RGB Gaming Keyboard</h3>
+              <span class="product-sku">SKU: KBD-4411</span>
+              <div class="product-price-row">
+                <span class="product-price">₹14,800</span>
+                <button class="btn btn-outline" style="padding: 4px 12px; font-size: 0.75rem;" onclick="showToast('Editing Keyboard')">Edit</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-header-banner" style="background:none;padding:0;">
+              <img src="https://images.unsplash.com/photo-1592078615290-033ee584e267?w=400&h=200&fit=crop&auto=format" alt="Ergonomic Office Chair" style="width:100%;height:100%;object-fit:cover;" loading="lazy">
+              <span class="product-stock-badge stock-out">Out of Stock</span>
+            </div>
+            <div class="product-card-content">
+              <span class="product-category-tag">Furniture</span>
+              <h3 class="product-title">Ergonomic High-Back Office Chair Mesh</h3>
+              <span class="product-sku">SKU: CHR-1090</span>
+              <div class="product-price-row">
+                <span class="product-price">₹28,200</span>
+                <button class="btn btn-outline" style="padding: 4px 12px; font-size: 0.75rem;" onclick="showToast('Restock purchase order placed!')">Restock</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-header-banner" style="background:none;padding:0;">
+              <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=200&fit=crop&auto=format" alt="Road Bike Helmet" style="width:100%;height:100%;object-fit:cover;" loading="lazy">
+              <span class="product-stock-badge stock-in">In Stock (32)</span>
+            </div>
+            <div class="product-card-content">
+              <span class="product-category-tag">Sports</span>
+              <h3 class="product-title">Ultralight Carbon Road Bike Helmet</h3>
+              <span class="product-sku">SKU: HLM-5509</span>
+              <div class="product-price-row">
+                <span class="product-price">₹12,450</span>
+                <button class="btn btn-outline" style="padding: 4px 12px; font-size: 0.75rem;" onclick="showToast('Editing Helmet')">Edit</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="product-card">
+            <div class="product-header-banner" style="background:none;padding:0;">
+              <img src="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=400&h=200&fit=crop&auto=format" alt="4K UltraWide Curved Monitor" style="width:100%;height:100%;object-fit:cover;" loading="lazy">
+              <span class="product-stock-badge stock-low">Low Stock (5)</span>
+            </div>
+            <div class="product-card-content">
+              <span class="product-category-tag">Displays</span>
+              <h3 class="product-title">4K UltraWide 34" Curved Studio Monitor</h3>
+              <span class="product-sku">SKU: MON-3400</span>
+              <div class="product-price-row">
+                <span class="product-price">₹64,999</span>
+                <button class="btn btn-outline" style="padding: 4px 12px; font-size: 0.75rem;" onclick="showToast('Editing 4K Monitor')">Edit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> <!-- END VIEW 3: PRODUCTS -->
+
+      <!-- ================================================================
+           VIEW 4: CUSTOMERS DIRECTORY
+           ================================================================ -->
+      <div class="view-section" id="view-customers">
+        <section class="hero-banner">
+          <div class="hero-text">
+            <h1>Customer Directory</h1>
+            <p>Manage customer profiles, purchase history, and loyalty tiers.</p>
+          </div>
+          <div class="hero-actions">
+            <button class="btn btn-outline" onclick="showToast('Exporting customer contact list...')">
+              <span>Export CSV</span>
+            </button>
+            <button class="btn btn-primary" onclick="showToast('Add Customer dialog opened')">
+              <span>+ New Customer</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- Customer Stats Grid -->
+        <section class="stats-grid">
+          <article class="stat-card">
+            <div class="stat-card-header">
+              <div class="stat-icon customers"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg></div>
+              <span class="trend-badge positive">+24.6%</span>
+            </div>
+            <div class="stat-card-body">
+              <h3>Total Registered</h3>
+              <div class="stat-card-value">18,910</div>
+            </div>
+            <div class="stat-card-footer">Verified customer accounts</div>
+          </article>
+
+          <article class="stat-card">
+            <div class="stat-card-header">
+              <div class="stat-icon revenue"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"></circle><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"></polyline></svg></div>
+              <span class="trend-badge positive">540 VIPs</span>
+            </div>
+            <div class="stat-card-body">
+              <h3>VIP Revenue</h3>
+              <div class="stat-card-value">₹2,84,000</div>
+            </div>
+            <div class="stat-card-footer">From top tier members</div>
+          </article>
+
+          <article class="stat-card">
+            <div class="stat-card-header">
+              <div class="stat-icon conversion"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"></polyline><polyline points="1 20 1 14 7 14"></polyline><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg></div>
+              <span class="trend-badge positive">48.2%</span>
+            </div>
+            <div class="stat-card-body">
+              <h3>Repeat Buyers</h3>
+              <div class="stat-card-value">8,110</div>
+            </div>
+            <div class="stat-card-footer">Customers with >1 purchase</div>
+          </article>
+        </section>
+
+        <!-- Customer Table -->
+        <section class="orders-section">
+          <div class="orders-toolbar">
+            <div class="order-tabs">
+              <button class="tab-btn active">All Customers (18,910)</button>
+              <button class="tab-btn" onclick="showToast('Filtered to VIPs')">VIP Tier (540)</button>
+              <button class="tab-btn" onclick="showToast('Filtered to Active')">Active This Month (4,210)</button>
+            </div>
+          </div>
+
+          <div class="table-responsive">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Customer</th>
+                  <th>Email</th>
+                  <th>Location</th>
+                  <th>Total Orders</th>
+                  <th>Lifetime Spend</th>
+                  <th>Loyalty Tier</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-label="Customer"><strong>Alex Morgan</strong></td>
+                  <td data-label="Email">alex.m@example.com</td>
+                  <td data-label="Location">Mumbai, MH</td>
+                  <td data-label="Total Orders">14 Orders</td>
+                  <td data-label="Lifetime Spend"><strong>₹1,42,800</strong></td>
+                  <td data-label="Loyalty Tier"><span class="status-pill status-completed">VIP Gold</span></td>
+                  <td data-label="Actions"><button class="btn btn-outline" style="padding: 4px 10px; font-size: 0.75rem;" onclick="showToast('Opening profile for Alex Morgan')">Profile</button></td>
+                </tr>
+                <tr>
+                  <td data-label="Customer"><strong>Elena Rostova</strong></td>
+                  <td data-label="Email">elena.k@example.com</td>
+                  <td data-label="Location">Bangalore, KA</td>
+                  <td data-label="Total Orders">8 Orders</td>
+                  <td data-label="Lifetime Spend"><strong>₹89,400</strong></td>
+                  <td data-label="Loyalty Tier"><span class="status-pill status-processing">Silver</span></td>
+                  <td data-label="Actions"><button class="btn btn-outline" style="padding: 4px 10px; font-size: 0.75rem;" onclick="showToast('Opening profile for Elena Rostova')">Profile</button></td>
+                </tr>
+                <tr>
+                  <td data-label="Customer"><strong>Tariq Chen</strong></td>
+                  <td data-label="Email">tariq.c@example.com</td>
+                  <td data-label="Location">New Delhi, DL</td>
+                  <td data-label="Total Orders">22 Orders</td>
+                  <td data-label="Lifetime Spend"><strong>₹2,15,600</strong></td>
+                  <td data-label="Loyalty Tier"><span class="status-pill status-completed">VIP Platinum</span></td>
+                  <td data-label="Actions"><button class="btn btn-outline" style="padding: 4px 10px; font-size: 0.75rem;" onclick="showToast('Opening profile for Tariq Chen')">Profile</button></td>
+                </tr>
+                <tr>
+                  <td data-label="Customer"><strong>Sophia Jenkins</strong></td>
+                  <td data-label="Email">sophia.j@example.com</td>
+                  <td data-label="Location">Hyderabad, TS</td>
+                  <td data-label="Total Orders">5 Orders</td>
+                  <td data-label="Lifetime Spend"><strong>₹45,200</strong></td>
+                  <td data-label="Loyalty Tier"><span class="status-pill status-shipped">Bronze</span></td>
+                  <td data-label="Actions"><button class="btn btn-outline" style="padding: 4px 10px; font-size: 0.75rem;" onclick="showToast('Opening profile for Sophia Jenkins')">Profile</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </div> <!-- END VIEW 4: CUSTOMERS -->
+
+      <!-- ================================================================
+           VIEW 5: ANALYTICS & INSIGHTS
+           ================================================================ -->
+      <div class="view-section" id="view-analytics">
+        <section class="hero-banner">
+          <div class="hero-text">
+            <h1>Performance Analytics</h1>
+            <p>Customer acquisition channels, device usage, and regional sales.</p>
+          </div>
+          <div class="hero-actions">
+            <button class="btn btn-outline" onclick="showToast('Downloading Analytics Summary PDF...')">
+              <span>Download PDF</span>
+            </button>
+          </div>
+        </section>
+
+        <!-- KPI Cards -->
+        <section class="stats-grid">
+          <article class="stat-card">
+            <div class="stat-card-header">
+              <div class="stat-icon revenue"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg></div>
+              <span class="trend-badge positive">↑ +6.4%</span>
+            </div>
+            <div class="stat-card-body">
+              <h3>Average Order Value</h3>
+              <div class="stat-card-value">₹3,755</div>
+            </div>
+            <div class="stat-card-footer">+₹220 compared to last quarter</div>
+          </article>
+
+          <article class="stat-card">
+            <div class="stat-card-header">
+              <div class="stat-icon orders"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg></div>
+              <span class="trend-badge positive">↓ -3.2%</span>
+            </div>
+            <div class="stat-card-body">
+              <h3>Cart Abandonment</h3>
+              <div class="stat-card-value">24.1%</div>
+            </div>
+            <div class="stat-card-footer">Well below industry 31% avg</div>
+          </article>
+
+          <article class="stat-card">
+            <div class="stat-card-header">
+              <div class="stat-icon customers"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="6"></circle><circle cx="12" cy="12" r="2"></circle></svg></div>
+              <span class="trend-badge positive">↓ -14.0%</span>
+            </div>
+            <div class="stat-card-body">
+              <h3>Acquisition Cost (CAC)</h3>
+              <div class="stat-card-value">₹420</div>
+            </div>
+            <div class="stat-card-footer">Cost per new acquired buyer</div>
+          </article>
+        </section>
+
+        <!-- Device & Region Grid -->
+        <section class="analytics-grid">
+          <div class="card-panel">
+            <div class="panel-header">
+              <div>
+                <h2 class="panel-title">Traffic by Device Category</h2>
+                <p class="panel-subtitle">Where customer orders originate</p>
+              </div>
+            </div>
+
+            <div class="category-list">
+              <div class="category-item">
+                <div class="category-info">
+                  <span>Mobile Devices (iOS & Android)</span>
+                  <strong>68% (₹87,330)</strong>
+                </div>
+                <div class="category-bar-bg">
+                  <div class="category-bar-fill" style="width: 68%; background-color: var(--primary);"></div>
+                </div>
+              </div>
+
+              <div class="category-item">
+                <div class="category-info">
+                  <span>Desktop & Laptops</span>
+                  <strong>25% (₹32,100)</strong>
+                </div>
+                <div class="category-bar-bg">
+                  <div class="category-bar-fill" style="width: 25%; background-color: var(--info);"></div>
+                </div>
+              </div>
+
+              <div class="category-item">
+                <div class="category-info">
+                  <span>Tablets & iPads</span>
+                  <strong>7% (₹8,970)</strong>
+                </div>
+                <div class="category-bar-bg">
+                  <div class="category-bar-fill" style="width: 7%; background-color: var(--warning);"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-panel">
+            <div class="panel-header">
+              <div>
+                <h2 class="panel-title">Top Sales by Region</h2>
+                <p class="panel-subtitle">Domestic order distribution</p>
+              </div>
+            </div>
+
+            <div class="category-list">
+              <div class="category-item">
+                <div class="category-info">
+                  <span>Maharashtra</span>
+                  <strong>₹43,600 (34%)</strong>
+                </div>
+                <div class="category-bar-bg">
+                  <div class="category-bar-fill" style="width: 34%; background-color: var(--primary);"></div>
+                </div>
+              </div>
+
+              <div class="category-item">
+                <div class="category-info">
+                  <span>Karnataka</span>
+                  <strong>₹33,300 (26%)</strong>
+                </div>
+                <div class="category-bar-bg">
+                  <div class="category-bar-fill" style="width: 26%; background-color: var(--info);"></div>
+                </div>
+              </div>
+
+              <div class="category-item">
+                <div class="category-info">
+                  <span>Delhi NCR</span>
+                  <strong>₹28,200 (22%)</strong>
+                </div>
+                <div class="category-bar-bg">
+                  <div class="category-bar-fill" style="width: 22%; background-color: var(--warning);"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div> <!-- END VIEW 5: ANALYTICS -->
+
+      <!-- ================================================================
+           VIEW 6: STORE SETTINGS
+           ================================================================ -->
+      <div class="view-section" id="view-settings">
+        <section class="hero-banner">
+          <div class="hero-text">
+            <h1>Store Settings</h1>
+            <p>Configure store profile, currency, taxes, and notification preferences.</p>
+          </div>
+          <div class="hero-actions">
+            <button class="btn btn-primary" onclick="showToast('All settings successfully saved.')">
+              <span>Save Changes</span>
+            </button>
+          </div>
+        </section>
+
+        <div class="settings-grid">
+          <!-- Card 1: Store Information -->
+          <div class="settings-card">
+            <h3 class="settings-card-title">Store Profile</h3>
+            <div class="form-group">
+              <label>Store Name</label>
+              <input class="form-control" type="text" value="Mohamed Maahir Store">
+            </div>
+            <div class="form-group">
+              <label>Support Email</label>
+              <input class="form-control" type="email" value="contact@mohamedmaahir.com">
+            </div>
+            <div class="form-group">
+              <label>Phone Contact</label>
+              <input class="form-control" type="text" value="+91 98765 43210">
+            </div>
+            <div class="form-group">
+              <label>Store Currency</label>
+              <select class="form-control">
+                <option selected>INR (₹) - Indian Rupee</option>
+                <option>USD ($) - US Dollar</option>
+                <option>EUR (€) - Euro</option>
+                <option>AED (د.إ) - UAE Dirham</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- Card 2: Notifications & Automation -->
+          <div class="settings-card">
+            <h3 class="settings-card-title">Notifications & Alerts</h3>
+            <div class="toggle-row">
+              <div class="toggle-label-group">
+                <span class="toggle-title">Order Confirmation Email</span>
+                <span class="toggle-description">Send instant invoice receipt to customer</span>
+              </div>
+              <label class="switch">
+                <input type="checkbox" checked>
+                <span class="slider"></span>
+              </label>
+            </div>
+
+            <div class="toggle-row">
+              <div class="toggle-label-group">
+                <span class="toggle-title">WhatsApp Dispatch Alerts</span>
+                <span class="toggle-description">Send tracking link when courier picks up package</span>
+              </div>
+              <label class="switch">
+                <input type="checkbox" checked>
+                <span class="slider"></span>
+              </label>
+            </div>
+
+            <div class="toggle-row">
+              <div class="toggle-label-group">
+                <span class="toggle-title">Low Stock Warning</span>
+                <span class="toggle-description">Alert manager when inventory falls below 10 units</span>
+              </div>
+              <label class="switch">
+                <input type="checkbox" checked>
+                <span class="slider"></span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Card 3: Tax & Invoicing -->
+          <div class="settings-card">
+            <h3 class="settings-card-title">GST & Business Details</h3>
+            <div class="form-group">
+              <label>GSTIN Number</label>
+              <input class="form-control" type="text" value="27AAAAA0000A1Z5">
+            </div>
+            <div class="form-group">
+              <label>Registered Business Address</label>
+              <input class="form-control" type="text" value="Suite 400, Business Bay, Mumbai 400001">
+            </div>
+            <div class="form-group">
+              <label>Default GST Rate</label>
+              <select class="form-control">
+                <option selected>18% (Standard Rate)</option>
+                <option>12% (Apparel/Goods)</option>
+                <option>5% (Essential Goods)</option>
+                <option>28% (Luxury Goods)</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div> <!-- END VIEW 6: SETTINGS -->
+
+      </main>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- ====================================================================
+       6. ACCESSIBLE NEW PRODUCT MODAL DIALOG
+       ==================================================================== -->
+  <div class="modal-overlay" id="productModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modalTitle">Add New Product</h3>
+        <button class="btn-icon" id="closeModalBtn" aria-label="Close dialog"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg></button>
+      </div>
+      <form id="productForm">
+        <div class="modal-body">
+          <div class="form-grid">
+            <div class="form-group full-width">
+              <label for="prodName">Product Title</label>
+              <input class="form-control" type="text" id="prodName" placeholder="e.g. Wireless Pro Earbuds" required>
+            </div>
+            <div class="form-group">
+              <label for="prodCategory">Category</label>
+              <select class="form-control" id="prodCategory">
+                <option>Electronics</option>
+                <option>Fashion</option>
+                <option>Home & Living</option>
+                <option>Health & Beauty</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="prodPrice">Price (₹ INR)</label>
+              <input class="form-control" type="number" id="prodPrice" placeholder="1999" step="1" required>
+            </div>
+            <div class="form-group full-width">
+              <label for="prodStock">Stock Quantity</label>
+              <input class="form-control" type="number" id="prodStock" placeholder="150" required>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" id="cancelModalBtn">Cancel</button>
+          <button type="submit" class="btn btn-primary">Save Product</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Main JavaScript App -->
+  <script src="js/app.js"></script>
+</body>
+</html>
